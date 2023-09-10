@@ -1,0 +1,85 @@
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Weather App ☁️</title>
+   <link rel="stylesheet" href="css/all.min.css">
+   <link rel="stylesheet" href="css/fontawesome.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+      <div class="animation">
+         <div id="rainSeason" class="rain"></div>
+         <div class="sun">
+            <div class="sunny"></div>
+         </div>
+         <div class="clouds">
+            <div class="big-cloud1">
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+               <div class="bcloud1"></div>
+            </div>
+            <div class="big-cloud">
+               <div class="bcloud"></div>
+               <div class="bcloud"></div>
+               <div class="bcloud"></div>
+               <div class="bcloud"></div>
+               <div class="bcloud"></div>
+            </div>
+         </div>
+         <div class="moonSpace">
+            <div class="space"><div></div></div>
+         </div>
+      </div>
+      <div class="content">
+         <nav>
+            <div class="location">
+               <h1><span id="city"></span> <span id="icon">🌧️</span></h1>
+               <i class="fa-solid fa-location-dot"></i><span id="country" class="country"></span>
+            </div>
+            <div class="time">
+               <div>
+                  <h1>
+                     <span id="hour"></span>
+                     <br>
+                     <span id="minutes"></span>
+                  </h1>
+                  <p id="pm-am"></p>
+               </div>
+               <p><span id="day"></span>, <span id="month"></span> <span id="date"></span></p>
+            </div>
+         </nav>
+         <section>
+            <div class="temp-status">
+               <h1><span id="temp"></span>°</h1>
+               <p id="weather-description"></p>
+               <p><span id="temp-range"></span>°c</p>
+            </div>
+         </section>
+         <footer>
+            <ul>
+               <li>
+                  <h3><span id="wind-speed"></span> meter/sec</h3>
+                  <p>Wind Speed</p>
+               </li>
+               <li>
+                  <h3><span id="humidity"></span>%</h3>
+                  <p>Humidity</p>
+               </li>
+               <li>
+                  <h3><span id="feels"></span>%</h3>
+                  <p>Feels like</p>
+               </li>
+            </ul>
+         </footer>
+      </div>
+   </div>
+<script src="main.js"></script>
+</body>
+</html>
