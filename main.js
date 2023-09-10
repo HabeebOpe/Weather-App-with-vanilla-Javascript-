@@ -8,6 +8,13 @@ const body = document.querySelector("body")
 
 function getDateAndTime()  {
    const date = new Date()
+   if(date.getHours() >= 9 || data.getHours() <= 18 ){
+      console.log("greter")
+      body.classList.add("suny")
+   }
+   else if (data.getHours() <= 7 || data.getHours() >= 19) {
+      body.classList.add("night")
+   }
    //Getting date
    dateValue.textContent = date.getDate()
    //Getting month
@@ -65,13 +72,6 @@ function getDateAndTime()  {
    }else if (dayValue == 6) {
       day.textContent = "Saturday"
    }
-   else if (hour.textContent <= 7 || hour.textContent >= 19){
-      body.classList.add("night")
-   }
-   else if (hourVal == 10){
-      body.classList.add("suny")
-      console.log("aunny")
-   }
 }
 getDateAndTime()
 
@@ -84,7 +84,6 @@ function animation(){
    console.log(animate)
 } 
 animation()
-
 
 //Getting User Location
 const cityValue = document.getElementById("city")
@@ -137,11 +136,5 @@ console.log(city)
             body.classList.add("drizzle")
          }
       })
-  
 }
-
 fetchLocation()
-
-/*
-Clear skyFew clouds. Scattered clouds. Broken clouds. Overcast clouds. Light rainModerate rain Heavy rain.  Light snow.  Moderate snow   Heavy snow. Thunderstorm. Mist. Fog.  Haze Drizzle Smoke
-*/
