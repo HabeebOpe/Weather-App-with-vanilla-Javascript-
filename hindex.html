@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+</head>
+
+<body>
+  <h1>Weather Information</h1>
+  <div id="weatherInfo"></div>
+
+  <script>
+    async function getWeather(apiKey, latitude, longitude) {
+      // Get weather data using OpenWeatherMap API
+      const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+      const weatherResponse = await fetch(weatherUrl);
+      const weatherData = await weatherResponse.json();
+
+      // Extract relevant information
+      const humidity = weatherData.main.humidity;
+      const windSpeed = weatherData.wind.speed;
+      const feelsLike = weatherData.main.feels_like;
+      const temperature = weatherData.main.temp;
+
+      // Display information
+      const weatherInfoDiv = document.getElementById('weatherInfo');
+      weatherInfoDiv.innerHTML = `
+        <p>Temperature: ${temperature}°C</p>
+        <p>Feels Like: ${feelsLike}°C</p>
+        <p>Humidity: ${humidity}%</p>
+        <p>Wind Speed: ${windSpeed} m/s</p>
+      `;
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            // Replace 'YOUR_OPENWEATHERMAP_API_KEY' with your actual API key
+            const openweathermapApiKey = '3dffd36178f9c1ceeedc4d65201e1055';
+            getWeather(openweathermapApiKey, latitude, longitude);
+          },
+          (error) => {
+            console.error(`Error getting location: ${error.message}`);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    }
+
+    getLocation();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+</head>
+
+<body>
+  <h1>Weather Information</h1>
+  <div id="locationInfo"></div>
+  <div id="weatherInfo"></div>
+
+  <script>
+    async function getWeather(apiKey, latitude, longitude) {
+      // Get weather data using OpenWeatherMap API
+      const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+      const weatherResponse = await fetch(weatherUrl);
+      const weatherData = await weatherResponse.json();
+
+      // Extract relevant information
+      const humidity = weatherData.main.humidity;
+      const windSpeed = weatherData.wind.speed;
+      const feelsLike = weatherData.main.feels_like;
+      const temperature = weatherData.main.temp;
+
+      // Display weather information
+      const weatherInfoDiv = document.getElementById('weatherInfo');
+      weatherInfoDiv.innerHTML = `
+        <p>Temperature: ${temperature}°C</p>
+        <p>Feels Like: ${feelsLike}°C</p>
+        <p>Humidity: ${humidity}%</p>
+        <p>Wind Speed: ${windSpeed} m/s</p>
+      `;
+    }
+
+    async function getCityCountryState(apiKey, latitude, longitude) {
+      // Get location information using OpenCage Geocoding API
+      const locationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+      const locationResponse = await fetch(locationUrl);
+      const locationData = await locationResponse.json();
+
+      // Extract city, country, and state information
+      const city = locationData.results[0].components.city;
+      const country = locationData.results[0].components.country;
+      const state = locationData.results[0].components.state;
+
+      // Display location information
+      const locationInfoDiv = document.getElementById('locationInfo');
+      locationInfoDiv.innerHTML = `
+        <p>State: ${state}</p>
+        <p>Country: ${country}</p>
+        <p>City: ${city}</p>
+      `;
+
+      // Call the function to get weather information after obtaining location
+      getWeather('3dffd36178f9c1ceeedc4d65201e1055', latitude, longitude);
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            // Replace 'YOUR_OPENCAGE_API_KEY' with your actual OpenCage API key
+            getCityCountryState('9e4a6e07f8634500b3e9178f90fd43a6', latitude, longitude);
+          },
+          (error) => {
+            console.error(`Error getting location: ${error.message}`);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    }
+
+    getLocation();
+  </script>
+</body>
+
+</html>

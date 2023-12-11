@@ -1,145 +1,3 @@
-// const minutes = document.getElementById("minutes")
-// const hour = document.getElementById("hour")
-// const pmAm = document.getElementById("pm-am")
-// const day = document.getElementById("day")
-// const month = document.getElementById("month")
-// let dateValue = document.getElementById("date")
-// const body = document.querySelector("body")
-
-// function getDateAndTime()  {
-//   const date = new Date()
-//   if(date.getHours() >= 9 || data.getHours() <= 18 ){
-//       console.log("greter")
-//       body.classList.add("suny")
-//   }
-//   else if (data.getHours() <= 7 || data.getHours() >= 19) {
-//       body.classList.add("night")
-//   }
-//   //Getting date
-//   dateValue.textContent = date.getDate()
-//   //Getting month
-//   monthValue = date.getMonth()
-//   if(monthValue == 0){
-//       month.textContent = "Jan"
-//   }else if(monthValue == 1)  {
-//       month.textContent = "Feb"
-//   }else if(monthValue == 2)  {
-//       month.textContent = "Mar"
-//   }else if (monthValue == 3) {
-//       month.textContent = "Apr"
-//   }else if (monthValue == 4) {
-//       month.textContent = "May"
-//   }else if (monthValue == 5) {
-//       month.textContent = "Jun"
-//   }else if (monthValue == 6) {
-//       month.textContent = "Jul"
-//   }else if (monthValue == 7) {
-//       month.textContent = "Aug"
-//   }else if (monthValue == 8) {
-//       month.textContent = "Sep"
-//   }else if (monthValue == 9) {
-//       month.textContent = "Oct"
-//   }else if (monthValue == 10) {
-//       month.textContent = "Nov"
-//   }else if (monthValue == 11) {
-//       month.textContent = "Dec"
-//   }
-//   //Getting Hour
-//   let hourVal = date.getHours()
-//   hour.textContent = hourVal
-//   //Getting Minutes
-//   minutes.textContent = date.getMinutes()
-//   //Getting pm or am
-//   if(hour.textContent > 12){
-//       pmAm.textContent = "pm"
-//   }else{
-//       pmAm.textContent = "am"
-//   }
-//   //Getting day
-//   dayValue = date.getDay()
-//   if(dayValue == 0){
-//       day.textContent = "Sunday"
-//   }else if(dayValue == 1){
-//       day.textContent = "Monday"
-//   }else if (dayValue == 2) {
-//       day.textContent = "Tuesday"
-//   }else if (dayValue == 3) {
-//       day.textContent = "Wednesday"
-//   }else if (dayValue == 4) {
-//       day.textContent = "Thursday"
-//   }else if (dayValue == 5) {
-//       day.textContent = "Friday"
-//   }else if (dayValue == 6) {
-//       day.textContent = "Saturday"
-//   }
-// }
-// getDateAndTime()
-
-// function animation(){
-//   for(var animate = 0; animate < 15; animate++){
-//       let animate = document.createElement("div")
-//       animate.classList.add("rainy")
-//       rainSeason.appendChild(animate)
-//   }
-//   console.log(animate)
-// } 
-// animation()
-
-// //Getting User Location
-// const cityValue = document.getElementById("city")
-// const countryValue = document.getElementById("country")
-// const icon = document.querySelector("#icon")
-// async function fetchLocation()   {
-//   let locationUrl = "https://ipinfo.io/json?token=93e5f64e7755db"
-//   let response = await fetch(locationUrl);
-//   let locationData = await response.json()
-//   cityValue.innerHTML = locationData.city
-//   countryValue.innerHTML = locationData.country
-// console.log(city)
-
-// //Getting weather info
-//   let apiKey = "3dffd36178f9c1ceeedc4d65201e1055"
-//   let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=${apiKey}&units=metric`
-//   fetch(weatherUrl)
-//       .then ((response) => response.json())
-//       .then((weatherData) => {
-//         console.log(weatherData)
-//         document.querySelector("#temp").innerHTML = Math.round(weatherData.main.temp)
-//         document.querySelector("#temp-range").innerHTML = weatherData.main.temp
-//         document.querySelector("#feels").innerHTML = Math.round(weatherData.main.feels_like)
-//         document.querySelector("#humidity").innerHTML = Math.round(weatherData.main.humidity)
-//         document.querySelector("#wind-speed").innerHTML = Math.round(weatherData.wind.speed)
-//         const climate = document.querySelector("#weather-description");
-//         climate.innerHTML = weatherData.weather[0].description
-//         weatherData.weather[0],description = "Heavy rain"
-//         let cli = climate.innerHTML
-//         if(cli = "Scattered clouds" || "overcast clouds" || "Broken clouds" || "skyFew clouds"){
-//             body.classList.add("its-cloud")
-//             icon.innerHTML = "☁️"
-//         }
-//         else if(cli = "Light rain" || "Moderate rain"){
-//             body.classList.add("slow-rain")
-//             icon.innerHTML = "🌧️"
-//         }
-//         else if(cli = "Smoke" || "Fog" || "mist"){
-//             body.classList.add("smoke")
-//             icon.innerHTML = "☁️"
-//         }
-//         else if(cli = "Thunderstorm"){
-//             body.classList.add(thunder)
-//             icon.innerHTML = "🌩️"
-//         }
-//         else if(cli = "Thunderstorm" || "Heavy rain"){
-//             icon.innerHTML = "⛈️"
-//         }
-//         else if (cli = "Drizzle"){
-//             body.classList.add("drizzle")
-//         }
-//       })
-// }
-// fetchLocation()
-
-
 const minutes = document.getElementById("minutes");
 const hour = document.getElementById("hour");
 const pmAm = document.getElementById("pm-am");
@@ -149,100 +7,154 @@ let dateValue = document.getElementById("date");
 const body = document.querySelector("body");
 
 function getDateAndTime() {
-   const date = new Date();
-   if (date.getHours() >= 9 && date.getHours() <= 18) {
-      console.log("greater");
-      body.classList.add("suny");
-   } else if (date.getHours() <= 7 || date.getHours() >= 19) {
-      body.classList.add("night");
-   }
+  const date = new Date();
+  if (date.getHours() >= 9 && date.getHours() <= 18) {
+    body.classList.add("suny");
+  } else if (date.getHours() <= 7 || date.getHours() >= 19) {
+    body.classList.add("night");
+  }
 
-   dateValue.textContent = date.getDate();
-   let monthValue = date.getMonth();
-   const months = [
+  dateValue.textContent = date.getDate();
+  let monthValue = date.getMonth();
+  const months = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
    ];
-   month.textContent = months[monthValue];
+  month.textContent = months[monthValue];
 
-   let hourVal = date.getHours();
-   hour.textContent = hourVal;
+  let hourVal = date.getHours();
+  hour.textContent = hourVal;
 
-   minutes.textContent = date.getMinutes();
+  minutes.textContent = date.getMinutes();
 
-   if (hourVal > 12) {
-      pmAm.textContent = "pm";
-   } else {
-      pmAm.textContent = "am";
-   }
+  if (hourVal > 12) {
+    pmAm.textContent = "pm";
+  } else {
+    pmAm.textContent = "am";
+  }
 
-   let dayValue = date.getDay();
-   const days = [
+  let dayValue = date.getDay();
+  const days = [
       "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
    ];
-   day.textContent = days[dayValue];
+  day.textContent = days[dayValue];
 }
 
 getDateAndTime();
 
-function animation() {
-   for (var animateIndex = 0; animateIndex < 15; animateIndex++) {
-      let animate = document.createElement("div");
-      animate.classList.add("rainy");
-      rainSeason.appendChild(animate);
-   }
-   console.log(animateIndex);
-}
-animation();
 
-const cityValue = document.getElementById("city");
-const countryValue = document.getElementById("country");
-const icon = document.querySelector("#icon");
+
+
+
+
+function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          try {
+            const locationData = await reverseGeocode(latitude, longitude);
+            console.log(`City: ${locationData.city}, State: ${locationData.state}`);
+
+            // You can use locationData.city and locationData.state for further processing.
+          } catch (error) {
+            console.error("Error fetching location:", error);
+          }
+        },
+        function(error) {
+          handleGeolocationError(error);
+        }
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+
+
+}
+async function reverseGeocode(latitude, longitude) {
+  const apiKey = '9e4a6e07f8634500b3e9178f90fd43a6'; // Replace with your OpenCage API key
+  const reverseGeocodeUrl = `https://api.opencagedata.com/geocode/v1/json?q=LAT+LNG&key=9e4a6e07f8634500b3e9178f90fd43a6`;
+
+  const response = await fetch(reverseGeocodeUrl);
+  const data = await response.json();
+  const cityValue = document.getElementById("city");
+  const countryValue = document.getElementById("country");
+  const icon = document.querySelector("#icon");
+
+  if (data.results && data.results.length > 0) {
+    const result = data.results[0];
+    const city = result.components.city || result.components.town;
+    console.log(city)
+    const state = result.components.state;
+  } else {
+    throw new Error("Unable to retrieve location data.");
+  }
+}
+
+
+
+function handleGeolocationError(error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      console.error("User denied the request for geolocation.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      console.error("Location information is unavailable.");
+      break;
+    case error.TIMEOUT:
+      console.error("The request to get user location timed out.");
+      break;
+    case error.UNKNOWN_ERROR:
+      console.error("An unknown error occurred.");
+      break;
+  }
+}
+
+// Call the function to get the current location
+getCurrentLocation();
+
+
+
+
+
 
 async function fetchLocation() {
-   let locationUrl = "https://ipinfo.io/json?token=93e5f64e7755db";
-   let response = await fetch(locationUrl);
-   let locationData = await response.json();
+  let apiKey = "3dffd36178f9c1ceeedc4d65201e1055";
+  let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=${apiKey}&units=metric`;
 
-   cityValue.innerHTML = locationData.city;
-   countryValue.innerHTML = locationData.country;
-   console.log(locationData.city);
+  fetch(weatherUrl)
+    .then((response) => response.json())
+    .then((weatherData) => {
+      document.querySelector("#temp").innerHTML = Math.round(weatherData.main.temp);
+      document.querySelector("#temp-range").innerHTML = weatherData.main.temp;
+      document.querySelector("#feels").innerHTML = Math.round(weatherData.main.feels_like);
+      document.querySelector("#humidity").innerHTML = Math.round(weatherData.main.humidity);
+      document.querySelector("#wind-speed").innerHTML = Math.round(weatherData.wind.speed);
 
-   let apiKey = "3dffd36178f9c1ceeedc4d65201e1055";
-   let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${locationData.city}&appid=${apiKey}&units=metric`;
+      const climate = document.querySelector("#weather-description");
+      climate.innerHTML = weatherData.weather[0].description;
 
-   fetch(weatherUrl)
-      .then((response) => response.json())
-      .then((weatherData) => {
-         console.log(weatherData);
-         document.querySelector("#temp").innerHTML = Math.round(weatherData.main.temp);
-         document.querySelector("#temp-range").innerHTML = weatherData.main.temp;
-         document.querySelector("#feels").innerHTML = Math.round(weatherData.main.feels_like);
-         document.querySelector("#humidity").innerHTML = Math.round(weatherData.main.humidity);
-         document.querySelector("#wind-speed").innerHTML = Math.round(weatherData.wind.speed);
+      let cli = climate.innerHTML;
 
-         const climate = document.querySelector("#weather-description");
-         climate.innerHTML = weatherData.weather[0].description;
-
-         let cli = climate.innerHTML;
-
-         if (cli === "Scattered clouds" || cli === "overcast clouds" || cli === "Broken clouds" || cli === "Few clouds") {
-            body.classList.add("its-cloud");
-            icon.innerHTML = "☁️";
-         } else if (cli === "Light rain" || cli === "Moderate rain") {
-            body.classList.add("slow-rain");
-            icon.innerHTML = "🌧️";
-         } else if (cli === "Smoke" || cli === "Fog" || cli === "mist") {
-            body.classList.add("smoke");
-            icon.innerHTML = "☁️";
-         } else if (cli === "Thunderstorm") {
-            body.classList.add("thunder");
-            icon.innerHTML = "🌩️";
-         } else if (cli === "Thunderstorm" || cli === "Heavy rain") {
-            icon.innerHTML = "⛈️";
-         } else if (cli === "Drizzle") {
-            body.classList.add("drizzle");
-         }
-      });
+      if (cli === "Scattered clouds" || cli === "overcast clouds" || cli === "Broken clouds" || cli === "Few clouds") {
+        body.classList.add("its-cloud");
+        icon.innerHTML = "☁️";
+      } else if (cli === "Light rain" || cli === "Moderate rain") {
+        body.classList.add("slow-rain");
+        icon.innerHTML = "🌧️";
+      } else if (cli === "Smoke" || cli === "Fog" || cli === "mist") {
+        body.classList.add("smoke");
+        icon.innerHTML = "☁️";
+      } else if (cli === "Thunderstorm") {
+        body.classList.add("thunder");
+        icon.innerHTML = "🌩️";
+      } else if (cli === "Thunderstorm" || cli === "Heavy rain") {
+        icon.innerHTML = "⛈️";
+      } else if (cli === "Drizzle") {
+        body.classList.add("drizzle");
+      }
+    });
 }
 
 fetchLocation();
