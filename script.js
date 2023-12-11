@@ -14,55 +14,53 @@ const humid = document.querySelector("#humidity")
 const windSpeedVal = document.querySelector("#wind-speed")
 const weatherDes = document.getElementById("weather-description")
 
-// function getDateAndTime() {
-const date = new Date();
-dateValue.textContent = date.getDate();
-let monthValue = date.getMonth();
-const months = [
+function getDateAndTime() {
+  const date = new Date();
+  dateValue.textContent = date.getDate();
+  let monthValue = date.getMonth();
+  const months = [
       "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
    ];
-month.textContent = months[monthValue];
+  month.textContent = months[monthValue];
 
-let hourVal = date.getHours();
-hour.textContent = hourVal;
+  let hourVal = date.getHours();
+  hour.textContent = hourVal;
 
-minutes.textContent = date.getMinutes();
+  minutes.textContent = date.getMinutes();
 
-if (hourVal > 12) {
-  pmAm.textContent = "pm";
-} else {
-  pmAm.textContent = "am";
-}
+  if (hourVal > 12) {
+    pmAm.textContent = "pm";
+  } else {
+    pmAm.textContent = "am";
+  }
 
-let dayValue = date.getDay();
-const days = [
+  let dayValue = date.getDay();
+  const days = [
       "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
    ];
-day.textContent = days[dayValue];
-// }
-// getDateAndTime()
-
-
-async function getWeather(apiKey, latitude, longitude) {
-  // Get weather data using OpenWeatherMap API
-  const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  const weatherResponse = await fetch(weatherUrl);
-  const weatherData = await weatherResponse.json();
-
-  // Extract relevant information
-  const humidity = weatherData.main.humidity;
-  const windSpeed = weatherData.wind.speed;
-  const feelsLike = weatherData.main.feels_like;
-  const temperature = weatherData.main.temp;
-  const weatherDescription = weatherData.weather[0].description;
-  
-  temp.textContent = Math.round(temperature)
-  tempRange.textContent = temperature
-  feels.textContent = Math.round(feelsLike)
-  humid.textContent = Math.round(humidity)
-  windSpeedVal.textContent = Math.round(windSpeed)
-  weatherDes.textContent = Math.round(weatherDescription)
+  day.textContent = days[dayValue];
 }
+getDateAndTime()
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        // Replace 'YOUR_OPENCAGE_API_KEY' with your actual OpenCage API key
+        getLocationInfo('9e4a6e07f8634500b3e9178f90fd43a6', latitude, longitude);
+      },
+      (error) => {
+        console.error(`Error getting location: ${error.message}`);
+      }
+    );
+  } else {
+    console.error('Geolocation is not supported by this browser.');
+  }
+}
+
+getLocation();
 
 async function getLocationInfo(apiKey, latitude, longitude) {
   // Get location information using OpenCage Geocoding API
@@ -89,22 +87,24 @@ async function getLocationInfo(apiKey, latitude, longitude) {
   getWeather('3dffd36178f9c1ceeedc4d65201e1055', latitude, longitude);
 }
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        // Replace 'YOUR_OPENCAGE_API_KEY' with your actual OpenCage API key
-        getLocationInfo('9e4a6e07f8634500b3e9178f90fd43a6', latitude, longitude);
-      },
-      (error) => {
-        console.error(`Error getting location: ${error.message}`);
-      }
-    );
-  } else {
-    console.error('Geolocation is not supported by this browser.');
-  }
-}
 
-getLocation();
+async function getWeather(apiKey, latitude, longitude) {
+  // Get weather data using OpenWeatherMap API
+  const weatherUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  const weatherResponse = await fetch(weatherUrl);
+  const weatherData = await weatherResponse.json();
+
+  // Extract relevant information
+  const humidity = weatherData.main.humidity;
+  const windSpeed = weatherData.wind.speed;
+  const feelsLike = weatherData.main.feels_like;
+  const temperature = weatherData.main.temp;
+  const weatherDescription = weatherData.weather[0].description;
+
+  temp.textContent = Math.round(temperature)
+  tempRange.textContent = temperature
+  feels.textContent = Math.round(feelsLike)
+  humid.textContent = Math.round(humidity)
+  windSpeedVal.textContent = Math.round(windSpeed)
+  weatherDes.textContent = Math.round(weatherDescription)
+}
