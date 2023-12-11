@@ -9,23 +9,22 @@ body{
    display: flex;
    align-items: center;
    justify-content: center;
-   background-image: linear-gradient(#282828, #6B6B6B);
-   /*background-image: linear-gradient(#888EFF, #fff);
-   background-image: linear-gradient(#FFD289 10%, #fff 90%);
-   background-image: linear-gradient(#181C33, #fff);*/
+   background-image: url(asset/rain.gif);
+   background-size: cover;
+   background-repeat: no-repeat;
    position: relative;
 }
 body.slow-rain{
-   background-image: linear-gradient(#4A8CC2, #fff);
+   background: gold;
 }
 body.smoke{
-   background-image: linear-gradient(#BDBDBD, #fff);
+   background: green;
 }
 body.night{
-   background-image: linear-gradient(#282828, #6B6B6B);
+   background: blue;
 }
 body.suny{
-   background-image: linear-gradient(#8FBEE8 10%, #fff 90%);
+   background: orange;
 }
 .container{
    position: relative;
